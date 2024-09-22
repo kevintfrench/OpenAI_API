@@ -98,5 +98,5 @@ audio_file = open("openai-audio.mp3", "rb")
 response = client.audio.transcriptions.create(model="whisper-1", file=audio_file)
 
 # Extract and print the transcript text
-print(response)
+print(response.text)
 
