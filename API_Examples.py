@@ -73,3 +73,19 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
+# Query OpenAI text moderation
+
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Create a request to the Moderation endpoint
+response = client.moderations.create(
+   model="text-moderation-latest",
+   input="My favorite book is The Diamond Sutra."
+
+)
+
+# Print the category scores
+print(response.results[0].category_scores)
+
+# 
+
