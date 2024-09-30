@@ -178,4 +178,15 @@ def get_response(prompt):
 response = get_response("Write a poem about ChatGPT in the style of a lymerick")
 print(response)
 
+# Chat response using iambic pentameter when the response is part of a function
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Craft a prompt that follows the instructions
+prompt = "Write a poem in iambic pentameter using basic English that a child can understand."
+
+# Get the response
+response = get_response(prompt)
+
+print(response)
+
 
