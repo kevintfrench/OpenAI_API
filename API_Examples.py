@@ -201,5 +201,17 @@ print("\n Original story: \n", story)
 print("\n Generated story: \n", response)
 
 
+# Using instructions and output
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
 
+# Create the instructions
+instructions = "You will be provided a pre-loaded text excerpt within triple backticks as delimeters.  Please determine the language of the text and generate a suitable title for the text"
+
+# Create the output format
+output_format = """For the output, please include the text, language and title each on a separate line and use 'Text:' 'Language:' and 'Title: as prefixes for each line"""
+
+# Create the final prompt
+prompt = instructions + output_format + f"```{text}```"
+response = get_response(prompt)
+print(response)
 
