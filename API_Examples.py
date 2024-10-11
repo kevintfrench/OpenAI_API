@@ -215,3 +215,17 @@ prompt = instructions + output_format + f"```{text}```"
 response = get_response(prompt)
 print(response)
 
+# One Shot Prompting
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Create a one-shot prompt
+prompt = """
+Q: Extract odd numbers from {1, 3, 7, 12, 19} 
+A: {1, 3, 7,19}
+Q: {3, 5, 11, 12, 16}
+A: 
+"""
+
+response = get_response(prompt)
+print(response)
+
