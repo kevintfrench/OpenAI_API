@@ -229,3 +229,22 @@ A:
 response = get_response(prompt)
 print(response)
 
+# Sentiment analysis with few-shot prompting
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+response = client.chat.completions.create(
+  model = "gpt-4o-mini",
+  # Provide the examples as previous conversations
+  messages = [{"role": "user", 
+  "content": "The price of the product is really fair give its features"},
+              {"role": "assistant", 
+              "content": "positive"},
+              {"role": "user", 
+              "content": "____"},
+              {"role": "____", "content": "____"},
+              # Provide the text for the model to classify
+              {"role": "____", "content": "____"}
+             ],
+  temperature = 0
+)
+print(response.choices[0].message.content)
