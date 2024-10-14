@@ -365,3 +365,82 @@ response = get_response(prompt)
 
 print("Original description: \n", product_description)
 print("Expanded description: \n", response)
+
+# Translations
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Craft a prompt that translates
+prompt = f"""Translate the marketing message from English to French, Spanish, and Japanese:```{marketing_message}```"""
+ 
+response = get_response(prompt)
+
+print("English:", marketing_message)
+print(response)
+
+
+# changing tone
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Craft a prompt to change the email's tone
+prompt = f"""Change the tone of the sample email text to a more professional, positive and user-centric style:```{sample_email}```"""
+
+response = get_response(prompt)
+
+print("Before transformation: \n", sample_email)
+print("After transformation: \n", response)
+
+
+# Multistep text improvement
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Craft a prompt to transform the text
+prompt = f"""Transform the text delimited by triple backticks with the following two steps:
+Step 1 - Proofread it without changing its structure
+Step 2 - Change the tone to be more formal and friendly
+'''{text}```"""
+
+response = get_response(prompt)
+
+print("Before transformation:\n", text)
+print("After transformation:\n", response)
+
+# Ticket splitting
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Craft a prompt to classify the ticket
+prompt = f"""Identify the ticket as either a technical issue, billing inqueiry or product feedback without providing anything else in the response:
+'''{ticket}"""
+
+response = get_response(prompt)
+
+print("Ticket: ", ticket)
+print("Class: ", response)
+
+# Using a few shot prompt to classify entities
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Craft a few-shot prompt to get the ticket's entities
+prompt = f"""Ticket: {ticket_1} -> Entities: {entities_1}
+            Ticket: {ticket_2} -> Entities: {entities_2}
+            Ticket: {ticket_3} -> Entities: {entities_3}
+            Ticket: {ticket_4} -> Entities: """
+
+response = get_response(prompt)
+
+print("Ticket: ", ticket_4)
+print("Entities: ", response)
+
+# Creating a function based on examples
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+examples="""input = [10, 5, 8] -> output = 23
+input = [5, 2, 4] -> output = 11
+input = [2, 1, 3] -> output = 6
+input = [8, 4, 6] -> output = 18
+"""
+
+# Craft a prompt that asks the model for the function
+prompt = f"""Infer the Python function that maps the inputs to the outputs in the provided examples.```{examples}```"""
+
+response = get_response(prompt)
+print(response)
