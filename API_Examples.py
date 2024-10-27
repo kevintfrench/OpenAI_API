@@ -476,3 +476,22 @@ tone_guidelines = "Maintain a professional and user-friendly tone in your respon
 base_system_prompt = chatbot_purpose + audience_guidelines + tone_guidelines
 response = get_response(base_system_prompt, "My new headphones aren't connecting to my device")
 print(response)
+
+# Behavioral modifications
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Define the order number condition
+order_number_condition = "If the user is asking about an order, and did not specify the order number, reply by asking for this number. "
+
+# Define the technical issue condition
+technical_issue_condition = "If the user is talking about a technical issue, start your response with `I'm sorry to hear about your issue with ...` "
+
+# Create the refined system prompt
+refined_system_prompt = base_system_prompt + order_number_condition + technical_issue_condition
+
+response_1 = get_response(refined_system_prompt, "My laptop screen is flickering. What should I do?")
+response_2 = get_response(refined_system_prompt, "Can you help me track my recent order?")
+
+print("Response 1: ", response_1)
+print("Response 2: ", response_2)
+
