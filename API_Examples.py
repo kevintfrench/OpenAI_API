@@ -530,3 +530,8 @@ response = client.chat.completions.create(
 response = response.choices[0].message.content
 print(response)
 
+# PROJECT 
+import os
+
+openai = os.environ["OPENAI"]
+
