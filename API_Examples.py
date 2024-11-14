@@ -535,3 +535,15 @@ import os
 
 openai = os.environ["OPENAI"]
 
+system_prompt = "You are a knowledgeable and friendly tour guide for visitors exploring Paris, providing concise, helpful information on popular landmarks."
+
+conversation = [
+    {"role": "system", "content": system_prompt},
+    {"role": "user", "content": "How far away is the Louvre from the Eiffel Tower (in miles) if you are driving?"},
+    {"role": "assistant", "content": "The Louvre is approximately 2.5 miles away from the Eiffel Tower by car."},
+    {"role": "user", "content": "Where is the Arc de Triomphe?"},
+    {"role": "assistant", "content": "The Arc de Triomphe is located at the western end of the Champs-Élysées in Paris."},
+    {"role": "user", "content": "What are the must-see artworks at the Louvre Museum?"},
+    {"role": "assistant", "content": "Some must-see artworks at the Louvre include the Mona Lisa, the Venus de Milo, and the Winged Victory of Samothrace."}
+]
+
