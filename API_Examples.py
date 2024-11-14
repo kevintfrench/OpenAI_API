@@ -531,24 +531,42 @@ response = response.choices[0].message.content
 print(response)
 
 # PROJECT 
+# Start your code here!
 import os
-
-openai = os.environ["OPENAI"]
-
+from openai import OpenAI
+# Define the model to use
+model = "gpt-3.5-turbo"
+# Ensure the API key is set
+api_key = os.environ.get("OPENAI_API_KEY")
+if api_key is None:
+    raise ValueError("The environment variable 'OPENAI_API_KEY' is not set.")
+# Define the client
+client = OpenAI(api_key=api_key)
+# Define the system prompt and conversation
 system_prompt = "You are a knowledgeable and friendly tour guide for visitors exploring Paris, providing concise, helpful information on popular landmarks."
-
 conversation = [
     {"role": "system", "content": system_prompt},
     {"role": "user", "content": "How far away is the Louvre from the Eiffel Tower (in miles) if you are driving?"},
     {"role": "assistant", "content": "The Louvre is approximately 2.5 miles away from the Eiffel Tower by car."},
     {"role": "user", "content": "Where is the Arc de Triomphe?"},
     {"role": "assistant", "content": "The Arc de Triomphe is located at the western end of the Champs-Élysées in Paris."},
-    {"role": "user", "content": "What are the must-see artworks at the Louvre Museum?"},
-    {"role": "assistant", "content": "Some must-see artworks at the Louvre include the Mona Lisa, the Venus de Milo, and the Winged Victory of Samothrace."}
+    {"role": "user", "content": "What are the most famous artworks at the Louvre?"},
+    {"role": "assistant", "content": "The most famous artworks at the Louvre include the Mona Lisa, the Raft of Medusa, and Liberty Leading the People."}
 ]
-
-response = client.completions.create(
-  temperature=0,
-  model="gpt-3.5-turbo-instruct",
-  prompt=system_prompt
+# API call to handle conversation
+response = client.chat_completions.create(
+    model=model,
+    messages=conversation,
+    temperature=0.0,
+    max_tokens=100
+)
+# Print the response
+print(response.choices[0].message
+.
+content
+)
+print(response.choices[0].message
+['
+content
+']
 )
