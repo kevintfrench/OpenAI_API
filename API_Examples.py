@@ -547,3 +547,8 @@ conversation = [
     {"role": "assistant", "content": "Some must-see artworks at the Louvre include the Mona Lisa, the Venus de Milo, and the Winged Victory of Samothrace."}
 ]
 
+response = client.completions.create(
+  temperature=0,
+  model="gpt-3.5-turbo-instruct",
+  prompt=system_prompt
+)
