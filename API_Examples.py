@@ -599,3 +599,20 @@ if model_list:  # Check if list is not empty
     print(model_list[0])
 else:
     print("No models retrieved.")
+
+# Saving a model locally
+from transformers import AutoModelForSequenceClassification
+
+# Define model ID
+model_id = "distilbert-base-uncased-finetuned-sst-2-english"
+
+# Load the model
+model = AutoModelForSequenceClassification.from_pretrained(model_id)
+
+# Ensure the save directory exists and save the model
+import os
+save_directory = f"models/{model_id}"
+os.makedirs(save_directory, exist_ok=True)
+model.save_pretrained(save_directory)
+
+print(f"Model saved to {save_directory}")
