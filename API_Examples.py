@@ -570,3 +570,9 @@ print(response.choices[0].message
 content
 ']
 )
+
+
+# Import hugging face
+from huggingface_hub import HfApi
+api = HfApi()
+list(api.list_models())
