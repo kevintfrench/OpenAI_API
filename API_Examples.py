@@ -572,7 +572,30 @@ content
 )
 
 
-# Import hugging face
+# Import huggingface
 from huggingface_hub import HfApi
 api = HfApi()
 list(api.list_models())
+
+# Using huggingface hub
+from huggingface_hub import HfApi, ModelFilter
+
+# Initialize API object
+api = HfApi()
+
+# List models with appropriate filter and sorting
+models = api.list_models(
+    filter=ModelFilter(task="text-classification"),
+    sort="downloads",
+    direction="desc",
+    limit=5
+)
+
+# Convert the list of models to a Python list
+model_list = list(models)
+
+# Print the first model if available
+if model_list:  # Check if list is not empty
+    print(model_list[0])
+else:
+    print("No models retrieved.")
