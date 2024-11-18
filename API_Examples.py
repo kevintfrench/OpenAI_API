@@ -616,3 +616,10 @@ os.makedirs(save_directory, exist_ok=True)
 model.save_pretrained(save_directory)
 
 print(f"Model saved to {save_directory}")
+
+# Pipeline example
+# Create the pipeline
+distil_pipeline = pipeline(task="sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+
+# Predict the sentiment
+distil_output = distil_pipeline(input)
