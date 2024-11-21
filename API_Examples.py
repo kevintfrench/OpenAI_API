@@ -637,3 +637,14 @@ bert_output = bert_pipeline(input)
 
 print(f"Bert Output: {bert_output[0]['label']}")
 print(f"Distil Output: {distil_output[0]['label']}")
+
+# image classification
+# Create the pipeline
+classifier = pipeline(task="image-classification", 
+            model="abhishek/autotrain_fashion_mnist_vit_base")
+
+# Predict the class of the image
+image = Image.open(cropped_image)
+
+# Print the results
+print(results[0]["label"])
