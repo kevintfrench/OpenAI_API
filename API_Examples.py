@@ -648,3 +648,25 @@ image = Image.open(cropped_image)
 
 # Print the results
 print(results[0]["label"])
+
+# Working with documents
+# Create the pipeline
+dqa = pipeline(task="document-question-answering", model="naver-clova-ix/donut-base-finetuned-docvqa")
+
+# Set the image and question
+image = "document.png"
+question = "Which meeting is this document about?"
+
+# Get the answer
+results = dqa(image=image, question=question)
+
+print(results)
+
+# Working with images
+# Create pipeline
+vqa = pipeline(task="visual-question-answering", model="dandelin/vilt-b32-finetuned-vqa")
+
+# Use image and question in vqa
+results = vqa(image=image, question=question)
+
+print(results)
